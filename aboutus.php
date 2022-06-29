@@ -1,3 +1,34 @@
+<?php
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "web2";
+
+// to connect the database and the form
+$conn = mysqli_connect($server,$username,$password,$database);
+
+if(isset($_POST["submitButton"]))
+{
+    // 1. fetch form data
+    $email = $_POST["email"];
+
+    // 2. submit form data
+    $insertData = mysqli_query($conn, "INSERT INTO subscribers(email)VALUES('$email')");
+    
+    if($insertdata)
+    {
+        echo "Data submitted successfully";
+    }
+    else
+    {
+        echo "Error";
+    }
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +40,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-light fixed-top shadow">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">Zalego Academy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#menus">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menus">
+                <div class="navbar-nav">
+                    <a href="#" class="nav-link active">Home</a>
+                    <a href="aboutus.html" class="nav-link">About Us</a>
+                    <a href="#" class="nav-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+
+
+    </nav>
+
+
     <main class="p-5 bg-light">
         <h1>About Us</h1>
             <p>
@@ -67,16 +117,16 @@
             <p style="padding-top: 60px; text-align: center; font-size: large; color: darkgray; font-weight: 400;">
                 Subscribe to get information, latest news about<br> Zalego Academy
             </p>
-            <form>
+            <form action="aboutus.php" method="POST">
                 <div class="row">
                     <div class="col-lg-4">
                     </div>
                     <div class="col-lg-4">
-                        <input type="text" class="form-control" placeholder="Your email address">
+                        <input type="text" name="email" class="form-control" placeholder="Your email address">
                         
                     </div>
                     <div class="col-lg-4">
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                        <button type="submit" name="submitButton" class="btn btn-primary">Submit</button>
                     </div>
                     
                 </div>

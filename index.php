@@ -1,35 +1,3 @@
-<?php
-$server = "localhost";
-$username = "root";
-$password = "";
-$database = "web2";
-
-// to connect the database and the form
-$conn = mysqli_connect($server,$username,$password,$database);
-
-if(isset($_POST["submitButton"]))
-{
-    // 1. fetch form data
-    $firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-    $email = $_POST["email"];
-    $phone = $_POST["phonenumber"];
-    $message = $_POST["message"];
-
-    // 2. submit form data
-    $insertData = mysqli_query($conn, "INSERT INTO contactus(firstname,lastname,phonenumber,email,message)VALUES('$firstname','$lastname','$phone','$email','$message')");
-    if($insertData){
-        echo "Data submitted succesfully";
-    }
-    else{
-        echo "Error occured";
-    }
-}
-
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +10,7 @@ if(isset($_POST["submitButton"]))
 </head>
 <body>
     <!-- navbar starts here -->
-   <!-- <nav class="navbar navbar-expand-lg bg-light fixed-top shadow">
+   <nav class="navbar navbar-expand-lg bg-light fixed-top shadow">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">Zalego Academy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#menus">
@@ -56,9 +24,9 @@ if(isset($_POST["submitButton"]))
                 </div>
             </div>
         </div>
- -->
 
-    </nav> -->
+
+    </nav>
 
     <!-- navbar ends here -->
     <main class="p-5 bg-light mb-4">
